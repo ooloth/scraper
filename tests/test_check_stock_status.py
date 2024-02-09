@@ -18,7 +18,7 @@ def mock_get():
 
 def test_check_stock_in_stock(mock_get):
     mock_get.get("http://example.com", text="<html><body><p>In Stock</p></body></html>")
-    result = check_stock("http://example.com", stock_status_logic)
+    result = check_stock_status("http://example.com", stock_status_logic)
     assert result is True
 
 
@@ -26,5 +26,5 @@ def test_check_stock_out_of_stock(mock_get):
     mock_get.get(
         "http://example.com", text="<html><body><p>Out of Stock</p></body></html>"
     )
-    result = check_stock("http://example.com", stock_status_logic)
+    result = check_stock_status("http://example.com", stock_status_logic)
     assert result is False
